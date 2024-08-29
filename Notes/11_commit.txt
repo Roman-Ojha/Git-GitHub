@@ -96,3 +96,19 @@
         8. Finally, review the changes on the `main` branch and push them to your remote repository using `git push origin main`.
 
         By following these steps, you should be able to recover the previously committed changes and bring them back into your `main` branch.
+        
+
+*) Change specific Commit Id Timestamp:
+    Suppose you want to change the date and time of the third commit from the latest:
+    Start the interactive rebase:
+        git rebase -i HEAD~3
+        or:
+        git rebase -i <ref>
+    In the editor, change pick to edit for the third commit:
+        pick <hash1> Commit message 1
+        pick <hash2> Commit message 2
+        edit <hash3> Commit message 3
+    Amend the commit date:
+        git commit --amend --no-edit --date="2024-07-22T14:30:00"
+    Continue the rebase:
+        git rebase --continue
